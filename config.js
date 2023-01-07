@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const StyleDictionary = require("style-dictionary");
 
 const jsFlatFormat = {
@@ -7,7 +8,19 @@ const jsFlatFormat = {
   },
 };
 
+const scssFlatFormat = {
+  name: "scss/flat",
+  formatter: ({ properties }) => {
+    return Object.entries(properties)
+      .map(([key, value]) => {
+        return `$${_.kebabCase(key)}: ${value}`;
+      })
+      .join(";\n");
+  },
+};
+
 StyleDictionary.registerFormat(jsFlatFormat);
+StyleDictionary.registerFormat(scssFlatFormat);
 
 module.exports = {
   source: ["tokens/**/*.json"],
@@ -18,7 +31,7 @@ module.exports = {
       files: [
         {
           destination: "_variables.scss",
-          format: "scss/variables",
+          format: "scss/flat",
         },
       ],
     },
