@@ -5,6 +5,7 @@ module.exports = {
   "color.error": "#BA1E45",
   "color.white": "#FFFFFF",
   "color.black": "#000000",
+  "color.transparent": "transparent",
   "spacing.0": "0rem",
   "spacing.1": "0.25rem",
   "spacing.2": "0.5rem",
