@@ -16,7 +16,7 @@ jobs:
     - name: Deliver Platform Deliverable To Application
       uses: andstor/copycat-action@v3
       with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        personal_token: "${{ secrets.GITHUB_TOKEN }}"
         src_branch: main
         src_path: build/js/_variables.js
         dst_owner: calvintan
