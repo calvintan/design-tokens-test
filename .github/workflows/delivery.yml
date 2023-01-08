@@ -1,0 +1,26 @@
+name: Delivery
+
+on:
+  push:
+    paths:
+      - "build/**"
+
+jobs:
+  deliver_to_react_application:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deliver Platform Deliverable To Application
+      uses: andstor/copycat-action@v3
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        src_branch: main
+        src_path: build/js/_variables.js
+        dst_owner: calvintan
+        dst_repo_name: consume-style-dictionary-github-actions
+        dst_branch: main
+        dst_path: tokens/_variables.js
+        commit_message: Update design tokens
